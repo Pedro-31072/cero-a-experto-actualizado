@@ -1,1 +1,17 @@
-<p>control-flow works!</p>
+<section class="grid grid-cols-1 md:grid-cols-2 grap-3">
+  <div class="bg-white rounded shadow p-18">
+    <h2 class="text-2xl font-bold mb-5">If: {{ showContent() }}</h2>
+    <button
+      class="p-2 bg-blue-500 rounded text-white"
+      type="button"
+      (click)="toogleContent()"
+    >
+      Click: Me!
+    </button>
+    @if (showContent()) {
+    <p>Hola Mundo</p>
+    }@else {
+    <p>**** *****</p>
+    }
+  </div>
+</section>
