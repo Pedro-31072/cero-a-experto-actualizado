@@ -9,8 +9,15 @@ type Grade = 'A' | 'B' | 'F';
 export class ControlFlow {
   public showContent = signal(false);
   public grade = signal<Grade>('A');
+  public frameworks = signal<string[]>([
+    'Angular',
+    'Vue',
+    'Svelte',
+    'Qwik',
+    'React',
+  ]);
+  public frameworks2 = signal<string[]>([]);
   public toogleContent() {
     this.showContent.update((value) => !value);
-    
   }
 }
