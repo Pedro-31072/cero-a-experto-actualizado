@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-
+type Grade = 'A' | 'B' | 'F';
 @Component({
   selector: 'app-control-flow',
   imports: [],
@@ -8,8 +8,9 @@ import { Component, signal } from '@angular/core';
 })
 export class ControlFlow {
   public showContent = signal(false);
+  public grade = signal<Grade>('A');
   public toogleContent() {
     this.showContent.update((value) => !value);
-
+    
   }
 }
