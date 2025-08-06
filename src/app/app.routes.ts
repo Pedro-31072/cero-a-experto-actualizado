@@ -58,6 +58,11 @@ export const routes: Routes = [
         title: 'View Transition',
       },
       
+      {
+        path: '',
+        redirectTo: 'view-transition',
+        pathMatch: 'full',
+      },
     ],
   },
   {
