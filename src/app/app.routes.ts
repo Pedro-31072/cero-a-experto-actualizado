@@ -12,6 +12,7 @@ export const routes: Routes = [
           import('./features/change-detection/change-detection').then(
             (c) => c.ChangeDetection
           ),
+        title: 'Change Detection',
       },
       {
         path: 'control-flow',
@@ -19,6 +20,7 @@ export const routes: Routes = [
           import('./features/control-flow/control-flow').then(
             (c) => c.ControlFlow
           ),
+        title: 'Control Flow',
       },
       {
         path: 'defer-options',
@@ -26,6 +28,7 @@ export const routes: Routes = [
           import('./features/defer-options/defer-options').then(
             (c) => c.DeferOptions
           ),
+        title: 'Defer Options',
       },
       {
         path: 'defer-views',
@@ -33,15 +36,18 @@ export const routes: Routes = [
           import('./features/defer-views/defer-views').then(
             (c) => c.DeferViews
           ),
+        title: 'Defer Views',
       },
       {
         path: 'user/:id',
         loadComponent: () => import('./features/user/user').then((c) => c.User),
+        title: 'User',
       },
       {
         path: 'user-list',
         loadComponent: () =>
           import('./features/users/users').then((c) => c.Users),
+        title: 'Users',
       },
       {
         path: 'view-transition',
@@ -49,6 +55,13 @@ export const routes: Routes = [
           import('./features/view-transition/view-transition').then(
             (c) => c.ViewTransition
           ),
+        title: 'View Transition',
+      },
+      
+      {
+        path: '',
+        redirectTo: 'view-transition',
+        pathMatch: 'full',
       },
     ],
   },
