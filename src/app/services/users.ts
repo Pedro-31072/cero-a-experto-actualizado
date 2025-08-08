@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { User } from '@features/user/user';
 import { UsersResponse } from '@interfaces/req.response';
 import { delay, map } from 'rxjs';
@@ -17,6 +17,8 @@ export class UsersService {
     loading: true,
     users: [],
   });
+  public users = computed(() => this.#state().users);
+  public loading = computed(() => this.#state().loading);
   constructor() {
     this.http
       .get<UsersResponse>(this.#url)
