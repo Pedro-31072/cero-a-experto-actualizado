@@ -7,7 +7,7 @@ interface State {
 @Injectable({
   providedIn: 'root',
 })
-export class Users {
+export class UsersService {
   #state = signal<State>({
     loading: true,
     users: [],
