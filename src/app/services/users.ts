@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { User } from '@features/user/user';
-import { UsersResponse } from '@interfaces/req.response';
-import { delay, map } from 'rxjs';
+import { User as IUser } from '@interfaces/req.response';
+import { delay } from 'rxjs';
 interface State {
-  users: User[];
+  users: IUser[];
   loading: boolean;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  readonly #url = 'https://reqres.in/api/users';
+  readonly #url = 'https://jsonplaceholder.typicode.com/users';
   private http = inject(HttpClient);
   #state = signal<State>({
     loading: true,
@@ -21,10 +20,9 @@ export class UsersService {
   public loading = computed(() => this.#state().loading);
   constructor() {
     this.http
-      .get<UsersResponse>(this.#url)
+      .get<IUser[]>(this.#url)
       .pipe(
         delay(2000),
-        map((usersResponse: UsersResponse) => usersResponse.data)
       )
       .subscribe((users) => {
         this.#state.set({
