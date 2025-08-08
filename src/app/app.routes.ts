@@ -57,7 +57,14 @@ export const routes: Routes = [
           ),
         title: 'View Transition',
       },
-      
+      {
+        path: 'view-transition-2',
+        loadComponent: () =>
+          import('./features/view-transition-2/view-transition').then(
+            (c) => c.ViewTransition2
+          ),
+        title: 'View Transition 2',
+      },
       {
         path: '',
         redirectTo: 'view-transition',
