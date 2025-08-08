@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { User } from '@features/user/user';
+import { UsersResponse } from '@interfaces/req.response';
+import { delay, map } from 'rxjs';
 interface State {
   users: User[];
   loading: boolean;
@@ -9,11 +11,24 @@ interface State {
   providedIn: 'root',
 })
 export class UsersService {
-  readonly #url = "https://reqres.in/api/users"
+  readonly #url = 'https://reqres.in/api/users';
   private http = inject(HttpClient);
   #state = signal<State>({
     loading: true,
     users: [],
   });
-  constructor() {}
+  constructor() {
+    this.http
+      .get<UsersResponse>(this.#url)
+      .pipe(
+        delay(2000),
+        map((usersResponse: UsersResponse) => usersResponse.data)
+      )
+      .subscribe((users) => {
+        this.#state.set({
+          loading: false,
+          users: users,
+        });
+      });
+  }
 }
