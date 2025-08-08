@@ -9,6 +9,7 @@ interface State {
   providedIn: 'root',
 })
 export class UsersService {
+  readonly #url = "https://reqres.in/api/users"
   private http = inject(HttpClient);
   #state = signal<State>({
     loading: true,
