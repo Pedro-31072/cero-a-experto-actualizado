@@ -1,1 +1,19 @@
 <app-title setTitle="Users list" withBold></app-title>
+<ul>
+  @for(user of usersService.users();track user.id){
+  <li class="flex items-center my-2 cursor-pointer">
+    <img
+      [ngSrc]="`https://picsum.photos/id/${user.id}/200/300`"
+      class="rounded w-14 h-14"
+      height="400"
+      width="600"
+      [alt]="user.name"
+    />
+    <a class="mx-5 hover:underline" [routerLink]="['/dashboard/user', user.id]">
+     {{user.id}} - {{user.name}}
+    </a>
+  </li>
+  } @empty {
+    <h3>Espere por favor</h3>
+  }
+</ul>
