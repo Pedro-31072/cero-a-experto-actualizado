@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { User as IUser } from '@interfaces/req.response';
+import { IUser } from '@interfaces/req.response';
 import { delay } from 'rxjs';
 interface State {
   users: IUser[];
@@ -21,9 +21,7 @@ export class UsersService {
   constructor() {
     this.http
       .get<IUser[]>(this.#url)
-      .pipe(
-        delay(2000),
-      )
+      .pipe(delay(2000))
       .subscribe((users) => {
         this.#state.set({
           loading: false,
