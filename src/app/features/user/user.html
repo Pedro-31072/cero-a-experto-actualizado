@@ -1,1 +1,11 @@
-<p>user works!</p>
+@if (user()) {
+<app-title [setTitle]="`User ${userName()}`"></app-title>
+<section>
+  <img
+    [srcset]="`https://picsum.photos/id/${user()!.id}/200/300`"
+    [alt]="user()?.name"
+  />
+</section>
+}@else {
+<p>Cargando información</p>
+}
