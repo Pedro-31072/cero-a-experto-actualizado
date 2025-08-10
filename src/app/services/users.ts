@@ -29,4 +29,8 @@ export class UsersService {
         });
       });
   }
+  getUserById(id: string) {
+    return this.http.get<IUser>(`${this.#url}/${id}`)
+    .pipe(delay(2000))
+  }
 }
